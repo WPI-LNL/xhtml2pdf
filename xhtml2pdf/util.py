@@ -503,7 +503,7 @@ class pisaTempFile(object):
                     (self.tell() + len_value) >= self.capacity
             if needs_new_strategy:
                 self.makeTempFile()
-        if type(value) is bytes:
+        if type(value) is bytes and sys.version_info >= (3, 0):
             try:
                 value = value.decode("utf-8")
             except UnicodeDecodeError:
